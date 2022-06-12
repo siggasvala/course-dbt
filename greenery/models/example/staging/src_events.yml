@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+
+  - name: greenery # name of the source 
+    schema: public # this is the schema our raw data lives in
+    database: dbt # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: events 
+        loaded_at_field: created_at
+        description: >
+          Contains event data; event_id, session_id, user_id, page_url, event_type, order_id and product_id.

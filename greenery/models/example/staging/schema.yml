@@ -1,0 +1,25 @@
+
+version: 2
+
+models:
+  - name: stg_addresses
+    description: "Select all columns from address table"
+
+  - name: stg_events
+    description: "Select all columns from events table "
+
+  - name: stg_order_items
+    description: "Select all columns from order items table "
+
+  - name: stg_orders
+    description: "Select all columns from orders table "
+  
+  - name: stg_products
+    description: "Select all columns from products table "
+  
+  - name: stg_promos
+    description: "Select all columns from promos table "
+
+  - name: stg_users
+    description: "Select all columns from promos table "
+    
