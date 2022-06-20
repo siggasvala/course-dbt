@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Table with summary information about orders. Unique per order_id."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique 
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: dim_products
+    description: "Table with essential information about product. Unique per product_id."
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique 
+  - name: dim_users
+    description: "Table with essential information about users. Unique per user_id."
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique 

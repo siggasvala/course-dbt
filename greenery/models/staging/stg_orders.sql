@@ -8,7 +8,7 @@ SELECT
     user_id, 
     promo_id, 
     address_id, 
-    created_at, 
+    created_at AS order_created_at, 
     order_cost, 
     shipping_cost, 
     order_total, 
@@ -17,4 +17,4 @@ SELECT
     estimated_delivery_at,
     delivered_at,
     status
-FROM {{ source('greenery', 'orders') }}
+FROM {{ source('src_greenery', 'orders') }}

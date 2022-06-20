@@ -1,3 +1,4 @@
+WEEK 1 ____________________
 How many users do we have? 
     130
     

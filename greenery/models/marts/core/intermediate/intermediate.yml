@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: int_order_product_summary
+    description: "Count distinct products in order, total products in order. List of product_ids"
+  - name: int_user_order_summary
+    description: "Find number of orders and money spent per user. "
