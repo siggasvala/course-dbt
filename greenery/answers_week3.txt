@@ -2,6 +2,16 @@ What is our overall conversion rate?
 578 unique sessions but 361 with. Conversion rate is 62.5 %. 
 I used fact_session_order. 
 
+To get number of sessions with counted distinct number of session_ids where order_id is not null.
+I obtain the unique number of sessions by remove the WHERE order_id IS NOT NULL. 
+
+SELECT 
+  COUNT(DISTINCT session_id) as num_purchases
+FROM 
+  dbt.dbt_sigga_j.fact_session_order
+WHERE 
+  order_id IS NOT NULL
+
 What is our conversion rate by product?
 For product conversion rate I found String of Pearls to have the highest (61 %).
 I used the following SQL
@@ -36,7 +46,7 @@ FROM
 JOIN 
   purchases as p 
 USING
-  (product_id)
+  (product_idn
 JOIN 
   dbt.dbt_sigga_j.dim_products AS dp 
 ON
