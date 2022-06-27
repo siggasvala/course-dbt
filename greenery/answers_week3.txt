@@ -1,0 +1,46 @@
+What is our overall conversion rate?
+578 unique sessions but 361 with. Conversion rate is 62.5 %. 
+I used fact_session_order. 
+
+What is our conversion rate by product?
+For product conversion rate I found String of Pearls to have the highest (61 %).
+I used the following SQL
+WITH
+pageviews AS (
+  SELECT
+    product_id,
+    COUNT(DISTINCT session_id) as num_page_views
+  FROM 
+    dbt.dbt_sigga_j.fact_pageviews
+  GROUP BY 
+    1
+), 
+
+purchases AS (
+  SELECT 
+    product_id, 
+    COUNT(DISTINCT order_id) num_purchases
+  FROM 
+    dbt.dbt_sigga_j.stg_order_items
+  GROUP BY 
+    1
+)
+SELECT 
+  dp.product_name,
+  pv.product_id,
+  pv.num_page_views,
+  p.num_purchases, 
+  (CAST(p.num_purchases AS FLOAT) / CAST(pv.num_page_views AS FLOAT)) AS product_conversion_rate
+FROM 
+  pageviews AS pv
+JOIN 
+  purchases as p 
+USING
+  (product_id)
+JOIN 
+  dbt.dbt_sigga_j.dim_products AS dp 
+ON
+  dp.product_id=pv.product_id
+ORDER BY 4 DESC
+
+
