@@ -24,4 +24,6 @@ models:
         tests:  
           - not_null
           - unique
-     
+  - name: product_funnel
+    description: "Table that feeds into BI tool with informtaion about product funnel"
+    
